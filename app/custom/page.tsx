@@ -1,12 +1,6 @@
-- import NavBar from '@/components/NavBar';
-- import { CATEGORY_DISPLAY, isCategory } from '@/lib/categories';
-- import { getGemPolicyForCategory } from '@/lib/gem-policy';
-- import ColorQtyMatrix from '@/components/ColorQtyMatrix';
-- import type { VariantRow } from '@/lib/types';
-- import SpecFieldset from '@/components/SpecFieldset';
-+ import NavBar from '../../components/NavBar';
-+ import { CATEGORY_DISPLAY, isCategory } from '../../lib/categories';
-+ import { getGemPolicyForCategory } from '../../lib/gem-policy';
-+ import ColorQtyMatrix from '../../components/ColorQtyMatrix';
-+ import type { VariantRow } from '../../lib/types';
-+ import SpecFieldset from '../../components/SpecFieldset';
+import NavBar from '../../components/NavBar';
+import { CATEGORY_DISPLAY, isCategory } from '../../lib/categories';
+import { getGemPolicyForCategory } from '../../lib/gem-policy';
+import ColorQtyMatrix from '../../components/ColorQtyMatrix';
+import type { VariantRow } from '../../lib/types';
+import SpecFieldset from '../../components/SpecFieldset';
