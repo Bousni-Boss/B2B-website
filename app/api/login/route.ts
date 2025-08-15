@@ -1,0 +1,1 @@
+import { NextResponse } from 'next/server';import { login } from '@/lib/auth';export async function POST(req:Request){const {username,password}=await req.json();const s=await login(username,password);if(!s)return NextResponse.json({error:'invalid'},{status:401});return NextResponse.json({ok:true,role:s.role});}

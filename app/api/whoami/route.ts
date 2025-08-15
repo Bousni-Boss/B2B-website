@@ -1,0 +1,1 @@
+import { NextResponse } from 'next/server';import { getSessionFromCookie } from '@/lib/auth';export async function GET(){const s=await getSessionFromCookie();return NextResponse.json({session:s??null});}

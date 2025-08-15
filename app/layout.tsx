@@ -1,0 +1,1 @@
+import './globals.css';import './theme.css';export const metadata={title:'Jewelry B2B Portal',description:'B2B catalog and custom orders (prototype)'};export default function RootLayout({children}:{children:React.ReactNode}){return(<html lang='en'><body>{children}</body></html>)}
