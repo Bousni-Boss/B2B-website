@@ -1,1 +1,11 @@
-'use client';import React from 'react';import type { VariantRow } from '@/lib/types';import type { GemPolicy } from '@/lib/gem-policy';export default function ColorQtyMatrix({colors,value,onChange,gemPolicy}:{colors:string[];value:VariantRow[];onChange:(rows:VariantRow[])=>void;gemPolicy:GemPolicy}){const addRow=()=>onChange([...value,{color:colors[0]||'',qty:1,...(gemPolicy.kind==='Synthetic stones'?{czColor:gemPolicy.syntheticColors?.[0]}:{}),...(gemPolicy.kind==='Precious stones'?{stoneType:gemPolicy.stoneTypes?.[0]}:{})}]);const update=(i:number,patch:Partial<VariantRow>)=>{const next=value.map((r,idx)=>idx===i?{...r,...patch}:r);onChange(next)};const remove=(i:number)=>onChange(value.filter((_,idx)=>idx!==i));return(<div className='space-y-2'>{value.map((row,i)=>(<div key={i} className='row' style={{gridTemplateColumns:'1fr 1fr 1fr auto'}}><select className='input' value={row.color} onChange={e=>update(i,{color:e.target.value})}>{colors.map(c=><option key={c} value={c}>{c}</option>)}</select>{gemPolicy.kind==='Synthetic stones'&&(<select className='input' value={row.czColor??gemPolicy.syntheticColors?.[0]} onChange={e=>update(i,{czColor:e.target.value})}>{(gemPolicy.syntheticColors??[]).map(c=><option key={c} value={c}>{c}</option>)}</select>)}{gemPolicy.kind==='Precious stones'&&(<select className='input' value={row.stoneType??gemPolicy.stoneTypes?.[0]} onChange={e=>update(i,{stoneType:e.target.value})}>{(gemPolicy.stoneTypes??[]).map(s=><option key={s} value={s}>{s}</option>)}</select>)}<div style={{display:'flex',gap:'8px'}}><input className='input' type='number' min={1} value={row.qty} onChange={e=>update(i,{qty:Math.max(1,Number(e.target.value)||1)})}/><button className='badge' onClick={()=>remove(i)}>Remove</button></div></div>))}<button className='button' onClick={addRow}>+ Add line</button></div>)}
+// components/ColorQtyMatrix.tsx
+- import type { VariantRow } from '@/lib/types';
+- import type { GemPolicy } from '@/lib/gem-policy';
++ import type { VariantRow } from '../lib/types';
++ import type { GemPolicy } from '../lib/gem-policy';
+
+// components/SpecFieldset.tsx
+- import { CATEGORY_FIELDS } from '@/lib/category-fields';
+- import type { SpecField } from '@/lib/types';
++ import { CATEGORY_FIELDS } from '../lib/category-fields';
++ import type { SpecField } from '../lib/types';
