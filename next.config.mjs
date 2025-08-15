@@ -5,10 +5,11 @@ import path from 'node:path';
 const nextConfig = {
   experimental: { serverActions: { allowedOrigins: ['*'] } },
   webpack: (config) => {
-    // Make "@/..." point to the project root
+    config.resolve.alias = config.resolve.alias || {};
     config.resolve.alias['@'] = path.resolve(process.cwd());
     return config;
   },
 };
 
 export default nextConfig;
+
