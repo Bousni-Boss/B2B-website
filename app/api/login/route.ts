@@ -1,1 +1,11 @@
-import { NextResponse } from 'next/server';import { login } from '@/lib/auth';export async function POST(req:Request){const {username,password}=await req.json();const s=await login(username,password);if(!s)return NextResponse.json({error:'invalid'},{status:401});return NextResponse.json({ok:true,role:s.role});}
+// app/api/login/route.ts
+- import { login } from '@/lib/auth';
++ import { login } from '../../../lib/auth';
+
+// app/api/logout/route.ts
+- import { logout } from '@/lib/auth';
++ import { logout } from '../../../lib/auth';
+
+// app/api/whoami/route.ts
+- import { getSessionFromCookie } from '@/lib/auth';
++ import { getSessionFromCookie } from '../../../lib/auth';
